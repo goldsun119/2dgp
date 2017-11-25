@@ -10,11 +10,6 @@ class Grass:
     def draw(self):
         self.image.draw(self.x,self.y)
 
-    def update(self,frame_time):
-        self.life_time += frame_time
-        self.total_frames += Grass.FRAMES_PER_ACTION * Grass.ACTION_PER_TIME * frame_time
-        self.frame = int(self.total_frames) % 10
-
 
 class Back:
     def __init__(self):

@@ -1,4 +1,4 @@
 import game_framework
-import stage_state
+import start_state
 
-game_framework.run(stage_state)
+game_framework.run(start_state)

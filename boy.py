@@ -27,6 +27,7 @@ class Boy:
         self.isJump = False
         self.isCollid = False
         self.state = self.RIGHT_RUN
+        self.meatcount = 0
         Boy.run_image = load_image('resource\\image\\run2.png')
         Boy.dead_image = load_image('resource\\image\\dead.png')
         Boy.collid_image = load_image('resource\\image\\collid.png')
