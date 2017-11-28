@@ -45,12 +45,12 @@ def create_world():
             for j in range(31):
                 if (meats[i].x >= UP_X[j]) and (meats[i].x <= UP_X[j + 1]):
                     if not (UP_X[j + 1] - UP_X[j] == 100):
-                        meats[i].y = 150
+                        meats[i].y = 250
         else:
             meats[i - 1].y = -400
 
         if meats[i].x in DOWN_X:
-            meats[i].y = 200
+            meats[i].y = 300
 
         meats[i].x += 10
     for i in range(32):
@@ -59,22 +59,18 @@ def create_world():
         cas[i].x = DOWN_X[i]
 
 
-def change_world():
-    global back
-
-
-
-
 def destroy_world():
-    global boy, grass, meats, vks, bros
+    global boy, grass, back, meats, carrots, cas
 
+    del(boy)
+    del(grass)
+    del(back)
     del(meats)
-    del(vks)
-    del(bros)
+    del(carrots)
+    del(cas)
 
 
 def enter():
-    game_framework.reset_time()
     create_world()
 
 
@@ -121,6 +117,18 @@ def update(frame_time):
     for ca in cas:
         ca.update(frame_time)
 
+    for carrot in carrots:
+            if collision.collide(boy,carrot):
+                if not carrot == carrots[-1]:
+                    carrots.remove(carrot)
+
+
+    for ca in cas:
+            if collision.collide(boy,ca):
+                cas.remove(ca)
+
+#    if carrots[-1].x <= 10 :
+ #       game_framework.push_state(end_state)
 
 
 def draw(frame_time):
@@ -143,9 +151,3 @@ def draw(frame_time):
     boy.draw_bb()
 
     update_canvas()
-
-
-
-
-
-

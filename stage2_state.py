@@ -19,6 +19,8 @@ back = None
 gajis= None
 dicos=None
 
+#stage2_image = load_image('resource\\image\\stage2.png')
+
 MAP_SIZE=10000      #cm = 100m 달리기
 
 
@@ -45,12 +47,12 @@ def create_world():
             for j in range(31):
                 if (meats[i].x >= UP_X[j]) and (meats[i].x <= UP_X[j + 1]):
                     if not (UP_X[j + 1] - UP_X[j] == 100):
-                        meats[i].y = 150
+                        meats[i].y = 250
         else:
             meats[i - 1].y = -400
 
         if meats[i].x in DOWN_X:
-            meats[i].y = 200
+            meats[i].y = 300
 
         meats[i].x += 10
     for i in range(32):
@@ -60,16 +62,17 @@ def create_world():
 
 
 def destroy_world():
-    global boy, grass, meats, gajis, dicos
+    global boy, grass, back, meats, gajis, dicos
 
-    del(meats)
-    del(gajis)
-    del(dicos)
+    del (boy)
+    del (grass)
+    del (back)
+    del (meats)
+    del (gajis)
+    del (dicos)
 
 
 def enter():
-    game_framework.reset_time()
-
     create_world()
 
 
@@ -114,11 +117,24 @@ def update(frame_time):
 
     for gaji in gajis:
         gaji.update(frame_time)
+        if gaji.x < -15:
+            gajis.remove(gaji)
 
     for dico in dicos:
         dico.update(frame_time)
+        if dico.x < -15:
+            dicos.remove(dico)
 
-    if gajis[31].x <= 0 :
+    for gaji in gajis:
+            if collision.collide(boy,gaji):
+                if not gaji == gajis[-1]:
+                    gajis.remove(gaji)
+
+    for dico in dicos:
+            if collision.collide(boy,dico):
+                dicos.remove(dico)
+
+    if gajis[-1].x <= -10 :
         game_framework.push_state(stage3_state)
 
 

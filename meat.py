@@ -14,7 +14,7 @@ class Meat18:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 90
+        self.x, self.y = 0, 190
         if Meat18.image == None:
             Meat18.image = load_image('resource\\image\\meat50.png')
 
@@ -42,7 +42,7 @@ class Meat20:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 90
+        self.x, self.y = 0, 190
         if Meat20.image == None:
             Meat20.image = load_image('resource\\image\\meat50.png')
 
@@ -70,7 +70,7 @@ class Meat22:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 90
+        self.x, self.y = 0, 190
         if Meat22.image == None:
             Meat22.image = load_image('resource\\image\\meat50.png')
 

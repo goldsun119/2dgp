@@ -1,5 +1,5 @@
 import game_framework
-import stage2_state
+import stage_state
 from pico2d import *
 
 
@@ -27,13 +27,13 @@ def handle_events(frame_time):
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(stage2_state)
+                game_framework.change_state(stage_state)
     pass
 
 
 def draw(frame_time):
     clear_canvas()
-    image.draw(400,200)
+    image.draw(400,250)
     update_canvas()
     pass
 

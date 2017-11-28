@@ -13,7 +13,7 @@ class Vk:
     image = None
 
     def __init__(self):
-        self.x, self.y = 10, 280
+        self.x, self.y = 10, 380
         Vk.image = load_image('resource\\image\\vk.png')
 
     def update(self, frame_time):
@@ -39,7 +39,7 @@ class Bro:
     image = None
 
     def __init__(self):
-        self.x, self.y = 200, 100
+        self.x, self.y = 200, 200
         Bro.image = load_image('resource\\image\\bro.png')
 
     def update(self, frame_time):
@@ -66,7 +66,7 @@ class Gaji:
     image = None
 
     def __init__(self):
-        self.x, self.y = 10, 280
+        self.x, self.y = 10, 380
         Gaji.image = load_image('resource\\image\\gaji.png')
 
     def update(self, frame_time):
@@ -93,7 +93,7 @@ class Dico:
     image = None
 
     def __init__(self):
-        self.x, self.y = 200, 100
+        self.x, self.y = 200, 200
         Dico.image = load_image('resource\\image\\dico.png')
 
     def update(self, frame_time):
@@ -119,7 +119,7 @@ class Carrot:
     image = None
 
     def __init__(self):
-        self.x, self.y = 10, 280
+        self.x, self.y = 10, 380
         Carrot.image = load_image('resource\\image\\carrot.png')
 
     def update(self, frame_time):
@@ -146,7 +146,7 @@ class Ca:
     image = None
 
     def __init__(self):
-        self.x, self.y = 200, 100
+        self.x, self.y = 200, 200
         Ca.image = load_image('resource\\image\\ca.png')
 
     def update(self, frame_time):

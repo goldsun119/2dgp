@@ -5,7 +5,6 @@ import random
 import collision
 import stage2_state
 
-
 from boy import Boy # import Boy class from boy.py
 from meat import Meat18, meat_count
 from grass import Grass, Back
@@ -17,7 +16,7 @@ grass = None
 back = None
 vks = None
 bros = None
-
+collid_time = 0.0
 
 MAP_SIZE=10000      #cm = 100m 달리기
 
@@ -44,21 +43,15 @@ def create_world():
             for j in range(31):
                 if (meats[i].x >= UP_X[j]) and (meats[i].x <= UP_X[j+1]):
                     if not (UP_X[j+1]-UP_X[j] == 100):
-                        meats[i].y = 150
+                        meats[i].y = 250
         if meats[i].x in DOWN_X:
-            meats[i].y=200
+            meats[i].y=300
 
         meats[i].x += 10
     for i in range(32):
         vks[i].x=UP_X[i]
     for i in range(7):
         bros[i].x = DOWN_X[i]
-
-
-def change_world():
-    game_framework.change_state(stage2_state)
-
-
 
 
 def destroy_world():
@@ -102,7 +95,7 @@ def handle_events(frame_time):
                 boy.handle_event(event)
 
 def update(frame_time):
-    global boy
+    global boy, collid_time
     boy.update(frame_time)
 
     for meat in meats:
@@ -110,17 +103,31 @@ def update(frame_time):
 
     for vk in vks:
         vk.update(frame_time)
+        if vk.x < -15:
+            vks.remove(vk)
 
     for bro in bros:
         bro.update(frame_time)
+        if bro.x < -15:
+            bros.remove(bro)
 
     for meat in meats:
         if collision.collide(boy,meat):
             meats.remove(meat)
             boy.meatcount+=1
-            print(boy.meat_count)
+            print(boy.meatcount)
 
-    if vks[31].x <= 0 :
+    for vk in vks:
+            if collision.collide(boy,vk):
+                if not vk == vks[-1]:
+                     vks.remove(vk)
+
+
+    for bro in bros:
+            if collision.collide(boy,bro):
+                bros.remove(bro)
+
+    if vks[-1].x <= -10 :
         game_framework.push_state(stage2_state)
 
 
