@@ -14,6 +14,9 @@ class Boy:
     FRAMES_PER_ACTION = 8
 
     image = None
+    vegitable_eat_sound = None
+    item_eat_sound = None
+
 
     RIGHT_JUMP, RIGHT_RUN, SLIDE, COLLID, DIE = 0, 1, 2, 3, 4
 
@@ -25,25 +28,57 @@ class Boy:
         self.dir = 0
         self.jumpCount = 0
         self.isJump = False
+        self.isDead = False
         self.isCollid = False
         self.state = self.RIGHT_RUN
         self.meatcount = 0
+        self.lifecount = 500
+        self.dead_frame = 0
         Boy.run_image = load_image('resource\\image\\run2.png')
         Boy.dead_image = load_image('resource\\image\\dead.png')
         Boy.collid_image = load_image('resource\\image\\collid2.png')
         Boy.slide_image = load_image('resource\\image\\slide2.png')
         Boy.jump_image = load_image('resource\\image\\jump22.png')
         Boy.jump2_image = load_image('resource\\image\\jump222.png')
+        if Boy.vegitable_eat_sound == None:
+            Boy.vegitable_eat_sound = load_wav('resource\\sound\\bomit.wav')
+            Boy.vegitable_eat_sound.set_volume(32)
+        if Boy.item_eat_sound == None:
+            Boy.item_eat_sound = load_wav('resource\\sound\\swallow.wav')
+            Boy.item_eat_sound.set_volume(32)
 
+
+    def eat_vegitable(self, vegitable):
+        self.vegitable_eat_sound.play()
+        self.lifecount-=10
+        pass
+
+    def eat_item(self, item):
+        self.item_eat_sound.play()
+        pass
 
     def update(self, frame_time):
         def clamp(minimum, x, maximum):
             return max(minimum, min(x, maximum))
 
         self.life_time += frame_time
-        distance = Boy.RUN_SPEED_PPS * frame_time
         self.total_frames += Boy.FRAMES_PER_ACTION * Boy.ACTION_PER_TIME * frame_time
         self.frame = int(self.total_frames) % 3
+
+        # 죽는지 확인
+        if self.lifecount> 0 :
+            self.lifecount -= 1
+        print(self.lifecount)
+
+        if self.lifecount<=0:
+            self.state=self.DIE
+            self.isDead=True
+
+        if self.isDead:
+            self.dead_frame+=1
+            if self.dead_frame>3:
+                self.dead_frame=3
+
 
         if self.isJump:
             self.jumpCount += 1
@@ -73,6 +108,8 @@ class Boy:
             self.jump_image.draw(self.x,self.y)
         elif self.isJump:
             self.jump2_image.draw(self.x,self.y)
+        elif self.isDead:
+            self.dead_image.clip_draw(self.dead_frame * 100 , 0 ,100,100,self.x,self.y)
 
 
 
@@ -83,6 +120,8 @@ class Boy:
             return self.x - 75, self.y - 50, self.x , self.y + 80
         if self.state == self.SLIDE:
             return self.x - 50, self.y - 50, self.x + 60, self.y + 15
+        if self.isDead:
+            return self.x-50, self.y-50, self.x+40, self.y+20
         return self.x - 30, self.y - 35, self.x + 40, self.y + 80
 
 

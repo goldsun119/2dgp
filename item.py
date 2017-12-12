@@ -2,10 +2,9 @@ import random
 
 from pico2d import *
 
-meat_count = 0
 
-class Meat18:
-    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 30 cm
+class Coke:
+    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 10 cm
     RUN_SPEED_KMPH = 17.0  # Km/Hour
     RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
@@ -14,26 +13,24 @@ class Meat18:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 190
-        if Meat18.image == None:
-            Meat18.image = load_image('resource\\image\\meat50.png')
+        self.x, self.y = 10, 380
+        Coke.image = load_image('resource\\image\\coke.png')
 
     def update(self, frame_time):
-        distance = Meat18.RUN_SPEED_PPS * frame_time
+        distance = Coke.RUN_SPEED_PPS * frame_time
         self.x -= distance
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 15, self. x + 20, self.y + 14
+        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
-
-class Meat20:
-    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 30 cm
+class Coke2:
+    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 10 cm
     RUN_SPEED_KMPH = 19.0  # Km/Hour
     RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
@@ -42,26 +39,24 @@ class Meat20:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 190
-        if Meat20.image == None:
-            Meat20.image = load_image('resource\\image\\meat50.png')
+        self.x, self.y = 10, 380
+        self.image = load_image('resource\\image\\coke.png')
 
     def update(self, frame_time):
-        distance = Meat20.RUN_SPEED_PPS * frame_time
+        distance = Coke2.RUN_SPEED_PPS * frame_time
         self.x -= distance
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 15, self. x + 20, self.y + 14
+        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
-
-class Meat22:
-    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 30 cm
+class Coke3:
+    PIXEL_PER_METER = (10.0 / 0.1)  # 10 pixel 10 cm
     RUN_SPEED_KMPH = 21.0  # Km/Hour
     RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
@@ -70,19 +65,18 @@ class Meat22:
     image = None
 
     def __init__(self):
-        self.x, self.y = 0, 190
-        if Meat22.image == None:
-            Meat22.image = load_image('resource\\image\\meat50.png')
+        self.x, self.y = 10, 380
+        self.image = load_image('resource\\image\\coke.png')
 
     def update(self, frame_time):
-        distance = Meat22.RUN_SPEED_PPS * frame_time
+        distance = Coke3.RUN_SPEED_PPS * frame_time
         self.x -= distance
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 15, self. x + 20, self.y + 14
+        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())

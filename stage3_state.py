@@ -4,6 +4,9 @@ import game_framework
 import random
 import collision
 import stage2_state
+import stage_state
+import ui
+import item
 
 
 from boy import Boy # import Boy class from boy.py
@@ -12,9 +15,11 @@ from grass import Grass,Back
 from vegitabled import Carrot,Ca
 
 boy = None
+boy_ui = None
 meats = None
 grass = None
 back = None
+cokes = None
 
 carrots = None
 Cas = None
@@ -29,12 +34,13 @@ def create_world():
             9400, 9900]
 
     DOWN_X = [1050, 1600, 2000, 3250, 3300, 4600, 4650, 5200, 5250, 6300, 6700, 6750, 8600, 9600, 9700]
+    COKE_X = [1700, 2200, 2500, 3500, 4000, 4800, 6000, 6900, 7700, 9000]
 
-    global boy, grass, meats, back, cas, carrots
-    boy = stage2_state.boy
+    global boy, meats, back, cas, carrots
+    boy = stage_state.boy
     back = Back()
     meats = [Meat22() for i in range(190)]
-    grass = Grass()
+    cokes = [item.Coke3() for i in range(10)]
 
     carrots = [Carrot() for i in range(32)]
     cas = [Ca() for i in range(15)]
@@ -51,13 +57,16 @@ def create_world():
 
         if meats[i].x in DOWN_X:
             meats[i].y = 300
-
+        if meats[i].x in COKE_X:
+            meats[i].y = 700
         meats[i].x += 10
     for i in range(32):
         carrots[i].x = UP_X[i]
     for i in range(15):
         cas[i].x = DOWN_X[i]
-
+    for i in range(10):
+        cokes[i].x = COKE_X[i]
+        cokes[i].y = 250
 
 def destroy_world():
     global boy, grass, back, meats, carrots, cas
@@ -103,6 +112,17 @@ def update(frame_time):
 
     boy.update(frame_time)
 
+    for coke in cokes:
+        if boy.lifecount <= 0:
+            coke.distance = 0
+        else:
+            coke.update(frame_time)
+
+    for coke in cokes:
+        if collision.collide(boy,coke):
+            cokes.remove(coke)
+            boy.lifecount+=100
+
     for meat in meats:
         meat.update(frame_time)
 
@@ -121,21 +141,27 @@ def update(frame_time):
             if collision.collide(boy,carrot):
                 if not carrot == carrots[-1]:
                     carrots.remove(carrot)
+                boy.eat_vegitable(carrot)
 
 
     for ca in cas:
             if collision.collide(boy,ca):
                 cas.remove(ca)
+                boy.eat_vegitable(ca)
 
-#    if carrots[-1].x <= 10 :
+    #    if carrots[-1].x <= 10 :
  #       game_framework.push_state(end_state)
 
 
 def draw(frame_time):
     clear_canvas()
     back.draw()
-    grass.draw()
+    stage_state.grass.draw()
     boy.draw()
+
+    for coke in cokes:
+        coke.draw()
+        coke.draw_bb()
 
     for meat in meats:
         meat.draw()
