@@ -24,7 +24,7 @@ class Vk:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 10, self.y - 140, self. x + 30, self.y + 100
+        return self.x - 10, self.y - 135, self. x + 28, self.y + 100
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -50,7 +50,7 @@ class Bro:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 30, self.y - 30, self. x + 30, self.y + 35
+        return self.x - 28, self.y - 30, self. x + 25, self.y + 35
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -77,7 +77,7 @@ class Gaji:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 25, self.y - 140, self. x + 30, self.y + 100
+        return self.x - 25, self.y - 135, self. x + 30, self.y + 100
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -104,7 +104,7 @@ class Dico:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 38, self.y - 35, self. x + 40, self.y + 40
+        return self.x - 30, self.y - 30, self. x + 30, self.y + 35
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -157,7 +157,7 @@ class Ca:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 30, self.y - 30, self. x + 30, self.y + 30
+        return self.x - 30, self.y - 30, self. x + 30, self.y + 27
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())

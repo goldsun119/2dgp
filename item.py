@@ -24,7 +24,7 @@ class Coke:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
+        return self.x - 13, self.y - 18, self. x + 13, self.y + 18
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -50,7 +50,7 @@ class Coke2:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
+        return self.x - 13, self.y - 18, self. x + 13, self.y + 18
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -76,7 +76,7 @@ class Coke3:
         self.image.draw(self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self. x + 20, self.y + 20
+        return self.x - 13, self.y - 18, self. x + 13, self.y + 18
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())

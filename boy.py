@@ -45,7 +45,7 @@ class Boy:
             Boy.vegitable_eat_sound.set_volume(32)
         if Boy.item_eat_sound == None:
             Boy.item_eat_sound = load_wav('resource\\sound\\swallow.wav')
-            Boy.item_eat_sound.set_volume(32)
+            Boy.item_eat_sound.set_volume(100)
 
 
     def eat_vegitable(self, vegitable):
@@ -67,7 +67,8 @@ class Boy:
 
         # 죽는지 확인
         if self.lifecount> 0 :
-            self.lifecount -= 1
+            self.lifecount -= 0
+            self.lifecount = min(self.lifecount,500)
         print(self.lifecount)
 
         if self.lifecount<=0:

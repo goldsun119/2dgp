@@ -41,9 +41,9 @@ class UI:
             self.playerscore = (int)(stage_state.boy.meatcount)
 
             #젤리카운트 draw
-            self.score_draw((int)(self.playerscore / 100), 650, 550)
-            self.score_draw((int)(self.playerscore % 100 / 10), 700, 550)
-            self.score_draw((int)(self.playerscore % 10), 750, 550)
+            self.score_draw((int)(self.playerscore / 100), 680, 30)
+            self.score_draw((int)(self.playerscore % 100 / 10), 730, 30)
+            self.score_draw((int)(self.playerscore % 10), 780, 30)
 
             self.hp_image.clip_draw(0,0, self.playerhp,13,340-(500-self.playerhp)/2,30)
 

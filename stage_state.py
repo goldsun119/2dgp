@@ -132,14 +132,14 @@ def update(frame_time):
         if collision.collide(boy,coke):
             cokes.remove(coke)
             boy.lifecount+=100
-
+            boy.eat_item(coke)
 
     for vk in vks:
         if boy.lifecount <= 0:
             vk.distance = 0
         else:
             vk.update(frame_time)
-        if vk.x < -15:
+        if vk.x < -20:
             vks.remove(vk)
 
 

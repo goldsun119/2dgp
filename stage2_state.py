@@ -127,6 +127,7 @@ def update(frame_time):
         if collision.collide(boy, coke):
             cokes2.remove(coke)
             boy.lifecount += 100
+            boy.eat_item(coke)
 
     for meat in meats:
         if boy.lifecount <= 0:
@@ -145,7 +146,7 @@ def update(frame_time):
             gaji.distance = 0
         else:
             gaji.update(frame_time)
-        if gaji.x < -15:
+        if gaji.x < -20:
             gajis.remove(gaji)
 
     for dico in dicos:
@@ -167,7 +168,7 @@ def update(frame_time):
                 dicos.remove(dico)
                 boy.eat_vegitable(dico)
 
-    if gajis[-1].x <= -10 :
+    if gajis[-1].x <= -10:
         game_framework.push_state(stage3_state)
 
 
@@ -191,6 +192,7 @@ def draw(frame_time):
     for dico in dicos:
         dico.draw()
         dico.draw_bb()
+
     global boy_ui
     boy_ui.draw()
     boy.draw_bb()
