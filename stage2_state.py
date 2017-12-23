@@ -10,8 +10,8 @@ import item
 
 
 from boy import Boy # import Boy class from boy.py
-from meat import Meat20, meat_count
-from grass import Grass,Back
+from meat import Meat20
+from grass import Back
 from vegitabled import Gaji,Dico
 
 boy = None
@@ -25,7 +25,7 @@ cokes2 = None
 
 #stage2_image = load_image('resource\\image\\stage2.png')
 
-MAP_SIZE=10000      #cm = 100m 달리기
+#MAP_SIZE=10000      #cm = 100m 달리기
 
 
 def create_world():
