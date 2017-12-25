@@ -1,4 +1,6 @@
 import random
+import game_framework
+import start_state
 
 from pico2d import *
 
@@ -67,9 +69,8 @@ class Boy:
 
         # 죽는지 확인
         if self.lifecount> 0 :
-            self.lifecount -= 0
+            self.lifecount -= 1
             self.lifecount = min(self.lifecount,500)
-        print(self.lifecount)
 
         if self.lifecount<=0:
             self.state=self.DIE
@@ -132,6 +133,9 @@ class Boy:
 
     def handle_event(self, event):
         if (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
+            if self.isDead:
+                game_framework.change_state(start_state)
+            else:
                 self.state = self.RIGHT_JUMP
                 self.isJump=True
                 self.dir = -1

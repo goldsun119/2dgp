@@ -156,7 +156,6 @@ def update(frame_time):
         if collision.collide(boy,meat):
             meats.remove(meat)
             boy.meatcount+=1
-            print(boy.meatcount)
 
 
 
@@ -189,19 +188,15 @@ def draw(frame_time):
 
     for vk in vks:
         vk.draw()
-        vk.draw_bb()
 
     for bro in bros:
         bro.draw()
-        bro.draw_bb()
 
     for coke in cokes:
         coke.draw()
-        coke.draw_bb()
     #ui draw
     global boy_ui
     boy_ui.draw()
 
-    boy.draw_bb()
 
     update_canvas()

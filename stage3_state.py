@@ -31,7 +31,7 @@ def create_world():
             9400, 9900]
 
     DOWN_X = [1050, 1600, 2000, 3250, 3300, 4600, 4650, 5200, 5250, 6300, 6700, 6750, 8600, 9600, 9700]
-    COKE_X = [1700, 2200, 2500, 3500, 4000, 4800, 6000, 6900, 7700, 9000]
+    COKE_X = [500, 1700, 2200, 3500, 4000, 6000, 7700, 9000]
 
     global boy, meats, back, cas, carrots,cokes3,boy_ui
     boy = stage_state.boy
@@ -39,7 +39,7 @@ def create_world():
     boy_ui = ui.UI()
     meats = [Meat22() for i in range(190)]
 
-    cokes3 = [item.Coke3() for i in range(10)]
+    cokes3 = [item.Coke3() for i in range(8)]
 
     carrots = [Carrot() for i in range(32)]
     cas = [Ca() for i in range(15)]
@@ -63,7 +63,7 @@ def create_world():
         carrots[i].x = UP_X[i]
     for i in range(15):
         cas[i].x = DOWN_X[i]
-    for i in range(10):
+    for i in range(8):
         cokes3[i].x = COKE_X[i]
         cokes3[i].y = 250
 
@@ -107,7 +107,7 @@ def handle_events(frame_time):
                 boy.handle_event(event)
 
 def update(frame_time):
-    global boy
+    global boy, boy_ui
 
     boy.update(frame_time)
     boy_ui.update(frame_time)
@@ -134,7 +134,6 @@ def update(frame_time):
         if collision.collide(boy, meat):
             meats.remove(meat)
             boy.meatcount += 1
-            print(boy.meatcount)
 
 
     for carrot in carrots:
@@ -142,7 +141,7 @@ def update(frame_time):
             carrot.distance = 0
         else:
             carrot.update(frame_time)
-        if carrot.x < -15:
+        if carrot.x < -30:
             carrots.remove(carrot)
 
     for ca in cas:
@@ -150,7 +149,7 @@ def update(frame_time):
             ca.distance = 0
         else:
             ca.update(frame_time)
-        if ca.x < -15:
+        if ca.x < -30:
             cas.remove(ca)
 
     for carrot in carrots:
@@ -164,8 +163,8 @@ def update(frame_time):
                 cas.remove(ca)
                 boy.eat_vegitable(ca)
 
-#    if carrots[-1].x <= -10:
-#clear
+    if carrots[-1].x <= 0:
+        boy_ui.clear = True
 
     #    if carrots[-1].x <= 10 :
  #       game_framework.push_state(end_state)
@@ -179,22 +178,18 @@ def draw(frame_time):
 
     for coke in cokes3:
         coke.draw()
-        coke.draw_bb()
 
     for meat in meats:
         meat.draw()
 
     for carrot in carrots:
         carrot.draw()
-        carrot.draw_bb()
 
     for ca in cas:
         ca.draw()
-        ca.draw_bb()
 
     global boy_ui
     boy_ui.draw()
 
-    boy.draw_bb()
 
     update_canvas()

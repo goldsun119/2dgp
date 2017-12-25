@@ -36,7 +36,7 @@ def create_world():
 
     DOWN_X = [1100, 1600, 2000, 3250, 3300, 4600, 5200, 6300, 6700, 8600, 9600]
 
-    COKE_X = [500, 1500, 2500, 3500, 4000, 4800, 6000, 6900, 7700, 9000]
+    COKE_X = [500, 1500, 2500, 3500, 4000, 4800, 6000, 6900, 7700, 9000, 9500]
 
     global boy, meats, back, gajis, dicos,cokes2,boy_ui
     boy = stage_state.boy
@@ -46,7 +46,7 @@ def create_world():
 
     gajis = [Gaji() for i in range(32)]
     dicos = [Dico() for i in range(11)]
-    cokes2 = [item.Coke2() for i in range(10)]
+    cokes2 = [item.Coke2() for i in range(11)]
 
     for i in range(190):
         meats[i].x = (50 * i) + 400
@@ -67,7 +67,7 @@ def create_world():
         gajis[i].x = UP_X[i]
     for i in range(11):
         dicos[i].x = DOWN_X[i]
-    for i in range(10):
+    for i in range(11):
         cokes2[i].x = COKE_X[i]
         cokes2[i].y = 250
 
@@ -139,7 +139,6 @@ def update(frame_time):
         if collision.collide(boy,meat):
             meats.remove(meat)
             boy.meatcount+=1
-            print(boy.meatcount)
 
     for gaji in gajis:
         if boy.lifecount <= 0:
@@ -180,21 +179,17 @@ def draw(frame_time):
 
     for coke in cokes2:
         coke.draw()
-        coke.draw_bb()
 
     for meat in meats:
         meat.draw()
 
     for gaji in gajis:
         gaji.draw()
-        gaji.draw_bb()
 
     for dico in dicos:
         dico.draw()
-        dico.draw_bb()
 
     global boy_ui
     boy_ui.draw()
-    boy.draw_bb()
 
     update_canvas()
