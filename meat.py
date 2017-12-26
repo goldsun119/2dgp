@@ -15,8 +15,7 @@ class Meat18:
 
     def __init__(self):
         self.x, self.y = 0, 190
-        if Meat18.image == None:
-            Meat18.image = load_image('resource\\image\\meat50.png')
+        Meat18.image = load_image('resource\\image\\meat50.png')
 
     def update(self, frame_time):
         distance = Meat18.RUN_SPEED_PPS * frame_time
@@ -43,8 +42,7 @@ class Meat20:
 
     def __init__(self):
         self.x, self.y = 0, 190
-        if Meat20.image == None:
-            Meat20.image = load_image('resource\\image\\meat50.png')
+        Meat20.image = load_image('resource\\image\\meat50.png')
 
     def update(self, frame_time):
         distance = Meat20.RUN_SPEED_PPS * frame_time
@@ -71,8 +69,7 @@ class Meat22:
 
     def __init__(self):
         self.x, self.y = 0, 190
-        if Meat22.image == None:
-            Meat22.image = load_image('resource\\image\\meat50.png')
+        Meat22.image = load_image('resource\\image\\meat50.png')
 
     def update(self, frame_time):
         distance = Meat22.RUN_SPEED_PPS * frame_time
