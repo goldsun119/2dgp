@@ -83,7 +83,7 @@ def enter():
 
 
 def exit():
-    destroy_world()
+   # destroy_world()
     close_canvas()
 
 
@@ -171,7 +171,6 @@ def update(frame_time):
 
 
 def draw(frame_time):
-    clear_canvas()
     back.draw()
     stage_state.grass.draw()
     boy.draw()

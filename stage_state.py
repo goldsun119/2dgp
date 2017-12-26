@@ -38,7 +38,7 @@ def create_world():
 
     COKE_X = [1700, 2200, 2500, 3500, 4000, 4800, 6000, 6900, 7700, 9000]
 
-    global boy, grass, meats, vks, back, bros,boy_ui , cokes
+    global boy, grass, meats, vks, back, bros, boy_ui, cokes
     boy = Boy()
     boy_ui = ui.UI()
     boy_ui.enter()
@@ -87,7 +87,7 @@ def enter():
 
 
 def exit():
-    destroy_world()
+    #destroy_world()
     close_canvas()
 
 
@@ -178,7 +178,6 @@ def update(frame_time):
 
 
 def draw(frame_time):
-    clear_canvas()
     back.draw()
     grass.draw()
     boy.draw()
