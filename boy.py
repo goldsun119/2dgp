@@ -18,6 +18,7 @@ class Boy:
     image = None
     vegitable_eat_sound = None
     item_eat_sound = None
+    jump_sound = None
 
 
     RIGHT_JUMP, RIGHT_RUN, SLIDE, COLLID, DIE = 0, 1, 2, 3, 4
@@ -48,6 +49,9 @@ class Boy:
         if Boy.item_eat_sound == None:
             Boy.item_eat_sound = load_wav('resource\\sound\\swallow.wav')
             Boy.item_eat_sound.set_volume(100)
+        if Boy.jump_sound == None:
+            Boy.jump_sound = load_wav('resource\\sound\\jump.wav')
+            Boy.jump_sound.set_volume(100)
 
 
     def eat_vegitable(self, vegitable):
@@ -57,6 +61,10 @@ class Boy:
 
     def eat_item(self, item):
         self.item_eat_sound.play()
+        pass
+
+    def jump_play(self):
+        self.jump_sound.play()
         pass
 
     def update(self, frame_time):
@@ -136,6 +144,7 @@ class Boy:
             if self.isDead:
                 game_framework.change_state(start_state)
             else:
+                self.jump_play()
                 self.state = self.RIGHT_JUMP
                 self.isJump=True
                 self.dir = -1
